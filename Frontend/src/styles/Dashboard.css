@@ -1,3 +1,4 @@
+/* Dashboard Styles */
 .dashboard {
   padding: 2rem;
   background-color: #121212;
@@ -8,12 +9,15 @@
 .dashboard h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
+  text-align: center;
+  color: #00bfff;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  padding: 1rem;
 }
 
 .card {
@@ -22,6 +26,7 @@
   padding: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
 }
 
 .card:hover {
@@ -33,4 +38,30 @@
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #00bfff;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #a9a9a9;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.primary-btn {
+  background-color: #00bfff;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background-color: #0093db;
+  transform: scale(1.05);
 }
