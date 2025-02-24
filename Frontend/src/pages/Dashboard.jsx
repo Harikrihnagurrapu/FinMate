@@ -1,78 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Sidebar from "../components/Sidebar";
+import TopBar from "../components/TopBar";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-  
   return (
     <div className="dashboard">
       {/* Sidebar Navbar */}
-      <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
-        <div className="sidebar-brand">
-          <h2>FinMate</h2>
-          <button className="sidebar-toggle-btn" onClick={toggleSidebar}>
-            {isSidebarOpen ? "✕" : "☰"}
-          </button>
-        </div>
-        <nav className="sidebar-nav">
-          <a href="/dashboard" className="sidebar-link active">
-            <i className="fas fa-home"></i>
-            <span>Dashboard</span>
-          </a>
-          <a href="/expense-tracker" className="sidebar-link">
-            <i className="fas fa-wallet"></i>
-            <span>Expense Tracker</span>
-          </a>
-          <a href="/stock-predictions" className="sidebar-link">
-            <i className="fas fa-chart-line"></i>
-            <span>Stock Predictions</span>
-          </a>
-          <a href="/portfolio" className="sidebar-link">
-            <i className="fas fa-coins"></i>
-            <span>Portfolio</span>
-          </a>
-          <a href="/credit-score" className="sidebar-link">
-            <i className="fas fa-credit-card"></i>
-            <span>Credit Score</span>
-          </a>
-          <a href="/chatbot" className="sidebar-link">
-            <i className="fas fa-robot"></i>
-            <span>Chatbot</span>
-          </a>
-        </nav>
-      </div>
+      <Sidebar />
 
       {/* Main Content Area */}
       <div className="main-content">
         {/* Top Bar */}
-        <div className="top-bar">
-          <div className="top-bar-left">
-            {/* <button className="sidebar-toggle-btn" onClick={toggleSidebar}>
-              ☰
-            </button> */}
-            <h1>Dashboard</h1>
-          </div>
-          <div className="top-bar-right">
-            <div className="user-profile">
-              <img
-                src="../assets/user-img.jpg"
-                alt="User Profile"
-                className="profile-image"
-              />
-              <span className="username">John Doe</span>
-            </div>
-          </div>
-        </div>
+        <TopBar title="Dashboard Overview" />
 
         {/* Dashboard Content */}
         <div className="dashboard-content">
           <div className="dashboard-grid">
-            {/* Expense Tracker Card */}
+            {/* Overview Card */}
             <div className="card expense-tracker">
               <div className="card-icon">
                 <i className="fas fa-wallet"></i>
@@ -89,7 +35,9 @@ const Dashboard = () => {
               </div>
               <h2>Financial Insights</h2>
               <p>Get real-time insights into your spending habits.</p>
-              <button className="btn primary-btn">View Insights</button>
+              <Link to="/financial-insights" className="btn primary-btn">
+                View Insights
+              </Link>
             </div>
 
             {/* Stock Predictions Card */}
@@ -99,7 +47,9 @@ const Dashboard = () => {
               </div>
               <h2>Stock Predictions</h2>
               <p>Predict stock market trends and make smarter investments.</p>
-              <button className="btn primary-btn">View Predictions</button>
+              <Link to="/stock-predictions" className="btn primary-btn">
+                View Predictions
+              </Link>
             </div>
 
             {/* Portfolio Management Card */}
@@ -109,7 +59,9 @@ const Dashboard = () => {
               </div>
               <h2>Portfolio Management</h2>
               <p>Track your investments and monitor returns.</p>
-              <button className="btn primary-btn">View Portfolio</button>
+              <Link to="/portfolio" className="btn primary-btn">
+                View Portfolio
+              </Link>
             </div>
 
             {/* Credit Score Card */}
@@ -119,7 +71,9 @@ const Dashboard = () => {
               </div>
               <h2>Credit Score</h2>
               <p>Check your credit score and get improvement tips.</p>
-              <button className="btn primary-btn">View Score</button>
+              <Link to="/credit-score" className="btn primary-btn">
+                View Score
+              </Link>
             </div>
 
             {/* Chatbot Card */}
@@ -129,7 +83,9 @@ const Dashboard = () => {
               </div>
               <h2>Chatbot</h2>
               <p>Get instant financial assistance from our AI chatbot.</p>
-              <button className="btn primary-btn">Chat Now</button>
+              <Link to="/chatbot" className="btn primary-btn">
+                Chat Now
+              </Link>
             </div>
           </div>
         </div>

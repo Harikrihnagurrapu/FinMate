@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import LoginPage from "./pages/LoginPage";
 // import Signup from "./pages/Signup";
 import SignUpPage from "./pages/SignUpPage";
-import ExpenseTracker from './components/ExpenseTracker';
+import ExpenseTracker from './pages/ExpenseTracker';
 
 function App() {
   return (
