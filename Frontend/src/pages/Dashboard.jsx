@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
+  
   return (
     <div className="dashboard">
       {/* Sidebar Navbar */}

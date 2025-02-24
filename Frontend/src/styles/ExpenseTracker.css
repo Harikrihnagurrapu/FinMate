@@ -1,0 +1,70 @@
+/* Expense Tracker Styles */
+.expense-tracker {
+  background-color: #2a2139;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
+}
+
+.expense-tracker h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  /* color: #00bfff; */
+}
+
+.expense-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.expense-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.expense-form .btn {
+  padding: 10px 20px;
+}
+
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #3a3a3a;
+  transition: background-color 0.3s;
+}
+
+.expense-item:hover {
+  background-color: #4d4d4d;
+}
+
+.expense-item span {
+  flex: 1;
+}
+
+.expense-item .btn {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.delete-btn {
+  background-color: #ff5252;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #ff3333;
+}
