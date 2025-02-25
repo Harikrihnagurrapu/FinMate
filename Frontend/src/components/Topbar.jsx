@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/TopBar.css';
+import React from "react";
+import "../styles/Topbar.css";
 
 const TopBar = ({ title }) => {
   return (
