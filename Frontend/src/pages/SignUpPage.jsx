@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"; // Import Firebase auth
-import { useNavigate } from "react-router-dom"; // For navigation
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 import "../styles/SignUpPage.css";
 
 const SignUpPage = () => {
@@ -9,21 +10,46 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
+    setError("");
 
     try {
-      // Create user with Firebase
-      await createUserWithEmailAndPassword(auth, email, password);
-      // Redirect to Dashboard on successful sign-up
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Store additional user data in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        name,
+        email,
+        // profilePicture: "", // You can add a default URL or allow users to upload a picture
+      });
+
       navigate("/dashboard");
     } catch (error) {
-      setError(error.message); // Display error message
+      setError(error.message);
     }
   };
+
+  // const handleGoogleSignUp = async () => {
+  //   try {
+  //     const userCredential = await signInWithPopup(auth, googleProvider);
+  //     const user = userCredential.user;
+
+  //     // Store additional user data in Firestore
+  //     await setDoc(doc(db, "users", user.uid), {
+  //       name: user.displayName,
+  //       email: user.email,
+  //       profilePicture: user.photoURL,
+  //     });
+
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
 
   return (
     <div className="signup-page">
@@ -69,6 +95,9 @@ const SignUpPage = () => {
             Sign Up
           </button>
         </form>
+        {/* <button className="btn google-btn" onClick={handleGoogleSignUp}>
+          <i className="fab fa-google"></i> Sign Up with Google
+        </button> */}
         <p className="login-link">
           Already have an account? <a href="/login">Log in</a>
         </p>
