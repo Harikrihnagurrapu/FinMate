@@ -1,55 +1,67 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, db } from "../firebase";
-import { useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../firebase"; // Import Firebase auth and Firestore
+import { useNavigate } from "react-router-dom"; // For navigation
+import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
 import "../styles/SignUpPage.css";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [profilePicture, setProfilePicture] = useState(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Create a new user with Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-
+  
+      let profilePictureBase64 = "";
+  
+      // Convert the profile picture to Base64 if provided
+      if (profilePicture) {
+        profilePictureBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            resolve(event.target.result.split(",")[1]); // Get the Base64 string
+          };
+          reader.onerror = (error) => {
+            reject(error);
+          };
+          reader.readAsDataURL(profilePicture); // Convert the file to Base64
+        });
+      }
+  
       // Store additional user data in Firestore
       await setDoc(doc(db, "users", user.uid), {
         name,
         email,
-        // profilePicture: "", // You can add a default URL or allow users to upload a picture
+        profilePicture: profilePictureBase64, // Store the Base64 string
+        createdAt: new Date(),
       });
-
+  
+      console.log("User data saved to Firestore:", {
+        name,
+        email,
+        profilePicture: profilePictureBase64,
+      }); // Log the saved data
+  
+      // Redirect to Dashboard on successful signup
       navigate("/dashboard");
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Display error message
     }
   };
-
-  // const handleGoogleSignUp = async () => {
-  //   try {
-  //     const userCredential = await signInWithPopup(auth, googleProvider);
-  //     const user = userCredential.user;
-
-  //     // Store additional user data in Firestore
-  //     await setDoc(doc(db, "users", user.uid), {
-  //       name: user.displayName,
-  //       email: user.email,
-  //       profilePicture: user.photoURL,
-  //     });
-
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
 
   return (
     <div className="signup-page">
@@ -91,13 +103,19 @@ const SignUpPage = () => {
               required
             />
           </div>
+          <div className="form-group">
+            <label htmlFor="profilePicture">Profile Picture</label>
+            <input
+              type="file"
+              id="profilePicture"
+              accept="image/*"
+              onChange={(e) => setProfilePicture(e.target.files[0])}
+            />
+          </div>
           <button type="submit" className="btn primary-btn">
             Sign Up
           </button>
         </form>
-        {/* <button className="btn google-btn" onClick={handleGoogleSignUp}>
-          <i className="fab fa-google"></i> Sign Up with Google
-        </button> */}
         <p className="login-link">
           Already have an account? <a href="/login">Log in</a>
         </p>
