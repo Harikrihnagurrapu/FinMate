@@ -110,3 +110,10 @@
     transform: translateY(0);
   }
 }
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}

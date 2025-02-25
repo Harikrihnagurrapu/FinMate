@@ -5,14 +5,22 @@ import Dashboard from "./pages/Dashboard";
 import LoginPage from "./pages/LoginPage";
 // import Signup from "./pages/Signup";
 import SignUpPage from "./pages/SignUpPage";
-import ExpenseTracker from './pages/ExpenseTracker';
+import ExpenseTracker from "./pages/ExpenseTracker";
+import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/expense-tracker" element={<ExpenseTracker />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
