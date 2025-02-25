@@ -25,7 +25,9 @@ const Dashboard = () => {
               </div>
               <h2>Expense Tracker</h2>
               <p>Track your daily expenses and manage your budget.</p>
-              <button className="btn primary-btn">View Expenses</button>
+              <Link to="/expense-tracker" className="btn primary-btn">
+                View Expense
+              </Link>
             </div>
 
             {/* Financial Insights Card */}
