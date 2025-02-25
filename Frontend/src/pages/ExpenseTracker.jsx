@@ -33,7 +33,7 @@ const ExpenseTracker = () => {
         <TopBar title="Expense Tracker" />
 
         {/* Expense Tracker Content */}
-        <div className="expense-tracker ex-st">
+        <div className="expense-tracker">
           <h2>Expense Tracker</h2>
           <div className="expense-form">
             <input
