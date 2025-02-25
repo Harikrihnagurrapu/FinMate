@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from "../components/Sidebar";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/Topbar";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import TopBar from '../components/TopBar';
+import TopBar from '../components/Topbar';
 import '../styles/ExpenseTracker.css';
 
 const ExpenseTracker = () => {
