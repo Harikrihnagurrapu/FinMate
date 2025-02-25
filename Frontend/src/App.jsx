@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ExpenseTracker from "./pages/ExpenseTracker";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
+import ProfileSettings from "./pages/ProfileSettings"; // Import ProfileSettings
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile-settings"
+          element={
+            <ProtectedRoute>
+              <ProfileSettings />
             </ProtectedRoute>
           }
         />

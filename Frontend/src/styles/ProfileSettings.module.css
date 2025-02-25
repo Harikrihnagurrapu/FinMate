@@ -1,0 +1,110 @@
+.profile-settings {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #2a2139;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+
+.profile-settings h1 {
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile-picture-section,
+.name-section {
+  margin-bottom: 2rem;
+}
+
+.profile-picture-section h2,
+.name-section h2 {
+  font-size: 1.5rem;
+  color: #00bfff;
+  margin-bottom: 1rem;
+}
+
+.profile-picture-label {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.profile-picture-label:hover .edit-icon {
+  opacity: 1;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.25rem;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.name-section input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #1f1b24;
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.name-section input:focus {
+  border-color: #00bfff;
+  outline: none;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.primary-btn {
+  background-color: #00bfff;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background-color: #0093db;
+  transform: scale(1.05);
+}
+
+.secondary-btn {
+  background-color: #4d4d4d;
+  color: #fff;
+}
+
+.secondary-btn:hover {
+  background-color: #3a3a3a;
+  transform: scale(1.05);
+}
+
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
