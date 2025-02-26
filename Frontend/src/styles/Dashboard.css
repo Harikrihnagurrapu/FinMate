@@ -43,11 +43,15 @@ body, html {
 .card {
   /* height:200px; */
   background-color: #2a2139;
+  /* display: flex; */
+  /* flex-direction: column; */
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
+  /* align-items: center; */
+  /* justify-conten t:center; */
 }
 
 .card:hover {

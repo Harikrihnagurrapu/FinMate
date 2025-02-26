@@ -13,7 +13,7 @@ const Dashboard = () => {
       {/* Main Content Area */}
       <div className="main-content">
         {/* Top Bar */}
-        <TopBar title="Dashboard Overview" />
+        <TopBar title="Dashboard " />
 
         {/* Dashboard Content */}
         <div className="dashboard-content">
